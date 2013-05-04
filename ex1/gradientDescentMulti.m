@@ -19,6 +19,13 @@ for iter = 1:num_iters
 
 
 
+    J = computeCost(X, y, theta);
+    n = size(X, 2);
+    tempTheta = theta;
+    parfor i = 1:n
+      tempTheta(i) = theta(i) - alpha / m * sum( (X*theta - y) .* X(:, i) );
+    endparfor
+    theta = tempTheta;
 
 
 
